@@ -12,16 +12,20 @@ function scoreSubmission(form) {
   let score = 0;
 
   // Company size scoring (0-3)
-  const sizeScores = { "1-10": 0, "11-50": 1, "51-200": 2, "201-500": 3, "500+": 3 };
+  const sizeScores = { "50-200": 1, "201-1000": 2, "1001-5000": 3, "5000+": 3 };
   score += sizeScores[form.companySize] || 0;
 
   // Compliance status scoring (0-4)
-  const complianceScores = { none: 3, partial: 2, audit: 4, breach: 4 };
+  const complianceScores = { none: 2, partial: 2, audit: 3, incident: 4 };
   score += complianceScores[form.compliance] || 0;
 
-  // Budget scoring (0-3)
-  const budgetScores = { low: 0, mid: 1, high: 2, enterprise: 3 };
-  score += budgetScores[form.budget] || 0;
+  // Region scoring (0-2)
+  const regionScores = { us: 1, eu: 2, latam: 1, multi: 2 };
+  score += regionScores[form.region] || 0;
+
+  // Role scoring (0-2)
+  const roleScores = { gc: 2, ciso: 2, cpo: 2, cro: 1, cto: 1, other: 0 };
+  score += roleScores[form.role] || 0;
 
   return score;
 }
@@ -35,10 +39,11 @@ export default function QualificationForm() {
     companyName: "",
     contactName: "",
     email: "",
+    role: "",
     companySize: "",
+    region: "",
     industry: "",
     compliance: "",
-    budget: "",
   });
   const [errors, setErrors] = useState({});
   const [result, setResult] = useState(null); // "qualified" | "not-qualified"
@@ -51,10 +56,11 @@ export default function QualificationForm() {
     if (!form.contactName.trim()) errs.contactName = t.qualErrorRequired;
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       errs.email = t.qualErrorEmail;
+    if (!form.role) errs.role = t.qualErrorRequired;
     if (!form.companySize) errs.companySize = t.qualErrorRequired;
+    if (!form.region) errs.region = t.qualErrorRequired;
     if (!form.industry) errs.industry = t.qualErrorRequired;
     if (!form.compliance) errs.compliance = t.qualErrorRequired;
-    if (!form.budget) errs.budget = t.qualErrorRequired;
     return errs;
   };
 
@@ -64,14 +70,14 @@ export default function QualificationForm() {
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
       const score = scoreSubmission(form);
-      setResult(score >= 7 ? "qualified" : "not-qualified");
+      setResult(score >= 6 ? "qualified" : "not-qualified");
     }
   };
 
   if (result) {
     const isQualified = result === "qualified";
     return (
-      <section className="relative py-20 px-4 bg-[#0B1620]">
+      <section id="qualification-form" className="relative py-20 px-4 bg-[#0B1620]">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
         <div className="max-w-lg mx-auto text-center rounded-2xl border border-[#1B3A4B] bg-[#102635] p-10">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#00C2D1]/10">
@@ -103,7 +109,7 @@ export default function QualificationForm() {
   }
 
   return (
-    <section className="relative py-20 px-4 bg-[#0B1620]">
+    <section id="qualification-form" className="relative py-20 px-4 bg-[#0B1620]">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 
@@ -142,10 +148,21 @@ export default function QualificationForm() {
           </div>
 
           {/* Email */}
-          <div className="sm:col-span-2">
+          <div>
             <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualEmail}</label>
             <input type="email" value={form.email} onChange={update("email")} className={inputClass} />
             {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
+          </div>
+
+          {/* Role */}
+          <div>
+            <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualRole}</label>
+            <select value={form.role} onChange={update("role")} className={selectClass}>
+              {t.qualRoleOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+            {errors.role && <p className="mt-1 text-xs text-red-400">{errors.role}</p>}
           </div>
 
           {/* Company size */}
@@ -157,6 +174,17 @@ export default function QualificationForm() {
               ))}
             </select>
             {errors.companySize && <p className="mt-1 text-xs text-red-400">{errors.companySize}</p>}
+          </div>
+
+          {/* Region */}
+          <div>
+            <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualRegion}</label>
+            <select value={form.region} onChange={update("region")} className={selectClass}>
+              {t.qualRegionOptions.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+            {errors.region && <p className="mt-1 text-xs text-red-400">{errors.region}</p>}
           </div>
 
           {/* Industry */}
@@ -179,17 +207,6 @@ export default function QualificationForm() {
               ))}
             </select>
             {errors.compliance && <p className="mt-1 text-xs text-red-400">{errors.compliance}</p>}
-          </div>
-
-          {/* Budget */}
-          <div>
-            <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualBudget}</label>
-            <select value={form.budget} onChange={update("budget")} className={selectClass}>
-              {t.qualBudgetOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>{opt.label}</option>
-              ))}
-            </select>
-            {errors.budget && <p className="mt-1 text-xs text-red-400">{errors.budget}</p>}
           </div>
         </div>
 

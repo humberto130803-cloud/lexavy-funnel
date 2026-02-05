@@ -1,10 +1,25 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
-import ImagePlaceholder from "./ImagePlaceholder";
+
+const PAIN_POINT_IMAGES = [
+  {
+    src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&fit=crop",
+    alt: "AI technology abstract visualization",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&fit=crop",
+    alt: "Global data network connections",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80&fit=crop",
+    alt: "Executive boardroom crisis meeting",
+  },
+];
 
 function PainPointRow({ point, index }) {
   const anim = useScrollAnimation();
   const imageLeft = index % 2 === 0;
+  const image = PAIN_POINT_IMAGES[index];
 
   const imageSlide = imageLeft
     ? anim.isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
@@ -16,7 +31,12 @@ function PainPointRow({ point, index }) {
 
   const imageBlock = (
     <div className={`flex-1 transition-all duration-700 ease-out ${imageSlide}`}>
-      <ImagePlaceholder label={`Pain Point ${index + 1}`} aspectRatio="4/3" />
+      <img
+        src={image.src}
+        alt={image.alt}
+        className="w-full aspect-[4/3] object-cover rounded-xl"
+        loading="lazy"
+      />
     </div>
   );
 
@@ -56,6 +76,10 @@ export default function PainPointsSection() {
   const headlineAnim = useScrollAnimation();
   const ctaAnim = useScrollAnimation();
 
+  const scrollToForm = () => {
+    document.getElementById("qualification-form")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative py-20 px-4 bg-[#0B1620]">
       {/* Top divider */}
@@ -69,9 +93,11 @@ export default function PainPointsSection() {
         <h2 className="max-w-4xl mx-auto text-center text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#EAF2F7]">
           {t.painPointsHeadline}
         </h2>
-        <p className="max-w-2xl mx-auto mt-5 text-center text-base md:text-lg text-[#9FB3C8] leading-relaxed">
-          {t.painPointsSubtitle}
-        </p>
+        {t.painPointsSubtitle && (
+          <p className="max-w-2xl mx-auto mt-5 text-center text-base md:text-lg text-[#9FB3C8] leading-relaxed">
+            {t.painPointsSubtitle}
+          </p>
+        )}
       </div>
 
       {/* Pain point rows */}
@@ -86,7 +112,10 @@ export default function PainPointsSection() {
         ref={ctaAnim.ref}
         className={`mt-16 text-center transition-all duration-700 ease-out ${ctaAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
-        <button className="px-10 py-4 text-base font-bold tracking-wider rounded-lg bg-[#00C2D1] text-[#0B1620] hover:bg-[#00A8B5] transition-colors cursor-pointer shadow-lg shadow-[#00C2D1]/20">
+        <button
+          onClick={scrollToForm}
+          className="px-10 py-4 text-base font-bold tracking-wider rounded-lg bg-[#00C2D1] text-[#0B1620] hover:bg-[#00A8B5] transition-colors cursor-pointer shadow-lg shadow-[#00C2D1]/20"
+        >
           {t.painPointsCta}
         </button>
       </div>
