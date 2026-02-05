@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { useLang } from "../LanguageContext";
+import useScrollAnimation from "../hooks/useScrollAnimation";
 
-function FaqItem({ question, answer }) {
+function FaqItem({ question, answer, index }) {
   const [open, setOpen] = useState(false);
+  const anim = useScrollAnimation();
 
   return (
-    <div className="border border-[#1B3A4B] rounded-xl overflow-hidden transition-colors hover:border-[#1B3A4B]/80">
+    <div
+      ref={anim.ref}
+      className={`border border-[#1B3A4B] rounded-xl overflow-hidden transition-all duration-700 ease-out hover:border-[#1B3A4B]/80 ${anim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-[#102635] cursor-pointer group"
@@ -54,18 +60,24 @@ function FaqItem({ question, answer }) {
 
 export default function FaqSection() {
   const { t } = useLang();
+  const titleAnim = useScrollAnimation();
 
   return (
     <section className="relative py-20 px-4 bg-[#102635]">
       {/* Title */}
-      <h2 className="text-center text-4xl sm:text-5xl font-bold text-[#EAF2F7] mb-12">
-        {t.faqTitle}
-      </h2>
+      <div
+        ref={titleAnim.ref}
+        className={`transition-all duration-700 ease-out ${titleAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <h2 className="text-center text-4xl sm:text-5xl font-bold text-[#EAF2F7] mb-12">
+          {t.faqTitle}
+        </h2>
+      </div>
 
       {/* FAQ list */}
       <div className="max-w-3xl mx-auto flex flex-col gap-3">
         {t.faqs.map((faq, i) => (
-          <FaqItem key={i} question={faq.q} answer={faq.a} />
+          <FaqItem key={i} question={faq.q} answer={faq.a} index={i} />
         ))}
       </div>
     </section>

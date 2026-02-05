@@ -10,50 +10,56 @@ export const translations = {
     cta: "AGENDA TU CONSULTA GRATUITA",
     scrollLabel: "Descubre como te protegemos",
 
-    // Comparison section
-    compHeadline:
-      "Deja de improvisar con la proteccion de datos, ignorar la normativa y arriesgar sanciones millonarias",
-    compSubtitle:
-      "Existe una forma profesional de proteger tu empresa que realmente funciona, es sostenible y convierte el cumplimiento en una ventaja competitiva.",
-    oldWayTitle: "LO TRADICIONAL",
-    newWayTitle: "CON LEXAVY",
-    oldWayItems: [
-      "No sabemos que datos recopilamos",
-      "Politica de privacidad copiada de internet",
-      "Esperamos que no pase nada",
-      "Reaccionamos cuando ya hay sancion",
-      "El DPO es alguien interno sin formacion",
-      "Contratos sin clausulas GDPR",
-      "Ignoramos solicitudes de acceso",
-      "Rezar para que no haya una brecha",
-    ],
-    newWayItems: [
-      "Auditoria completa de datos personales",
-      "Politicas personalizadas y 100% conformes",
-      "Estrategia proactiva de cumplimiento",
-      "Prevencion y monitoreo continuo",
-      "DPO externo certificado e independiente",
-      "Contratos blindados y alineados con GDPR",
-      "Gestion profesional de solicitudes DSAR",
-      "Plan de respuesta ante brechas listo",
-    ],
-    oldBadges: [
-      { text: "Asi lo hacen muchos", pos: 0 },
-      { text: "Agotador", pos: 4 },
-      { text: "Me rindo", pos: 7 },
-    ],
-    newBadges: [
-      { text: "El metodo correcto", pos: 0 },
-      { text: "Cumplimiento desde el dia 1", pos: 3 },
-      { text: "Tranquilidad total", pos: 6 },
+    // Lead capture form
+    leadFormTitle: "Descarga gratis: Guia de cumplimiento GDPR",
+    leadFormSubtitle: "Recibe nuestra guia paso a paso para proteger tu empresa",
+    leadFormName: "Nombre completo",
+    leadFormEmail: "Email corporativo",
+    leadFormCompany: "Nombre de tu empresa",
+    leadFormSubmit: "DESCARGAR GUIA GRATIS",
+    leadFormDisclaimer: "Sin spam. Cumplimos con GDPR.",
+    leadFormSuccess: "Guia enviada a tu email",
+    leadFormSuccessMsg: "Revisa tu bandeja de entrada. Si no lo encuentras, revisa la carpeta de spam.",
+    leadFormErrorName: "El nombre es obligatorio",
+    leadFormErrorEmail: "Introduce un email valido",
+    leadFormErrorCompany: "El nombre de la empresa es obligatorio",
+
+    // Social proof section
+    socialProofLabel: "CONFIAN EN NOSOTROS",
+    socialProofLogos: ["TechCorp", "DataSafe EU", "CloudFirst", "SecureNet", "PrivacyOne", "CompliHub"],
+    socialProofStats: [
+      { value: "50+", label: "Empresas protegidas" },
+      { value: "99%", label: "Tasa de cumplimiento" },
+      { value: "15+", label: "Anos de experiencia" },
     ],
 
-    // Pillars section
-    pillarsHeadline: "Cumplimiento + Estrategia = Tranquilidad Total",
-    pillarsSubtitle:
-      "Hay una razon por la que algunas empresas operan con confianza, evitan sanciones y convierten la privacidad en ventaja competitiva. Todo se reduce a estrategia y sistemas.",
-    pillarsRoadmap: "Nuestra hoja de ruta te guia al cumplimiento",
-    pillarsCards: [
+    // Pain points section
+    painPointsHeadline: "Los problemas que enfrentas sin proteccion de datos adecuada",
+    painPointsSubtitle: "Cada dia sin cumplimiento es un dia de riesgo. Estos son los problemas reales que vemos en empresas como la tuya.",
+    painPoints: [
+      {
+        title: "No sabes que datos recopilas ni donde estan",
+        desc: "Sin un mapeo claro de datos personales, tu empresa opera a ciegas. No puedes proteger lo que no conoces, y cualquier inspeccion te dejaria expuesto.",
+      },
+      {
+        title: "Tus politicas de privacidad son genericas o inexistentes",
+        desc: "Una politica copiada de internet no te protege legalmente. Las autoridades buscan documentacion personalizada que refleje tu actividad real de tratamiento de datos.",
+      },
+      {
+        title: "Reaccionas en vez de prevenir",
+        desc: "Esperar a que llegue una sancion o una brecha de datos es la estrategia mas cara. El coste de prevenir es una fraccion del coste de remediar.",
+      },
+      {
+        title: "No tienes un plan de respuesta ante brechas",
+        desc: "Cuando ocurre una brecha de datos, tienes 72 horas para notificar a la autoridad. Sin un protocolo listo, cada hora cuenta y las multas se multiplican.",
+      },
+    ],
+    painPointsCta: "PROTEGE TU EMPRESA AHORA",
+
+    // Differentiators section
+    diffHeadline: "Por que las empresas eligen Lexavy",
+    diffSubtitle: "Combinamos experiencia legal, tecnologia y estrategia para ofrecer un servicio integral de proteccion de datos.",
+    diffCards: [
       {
         title: "Gestion de Privacidad de Datos",
         desc: "Asesoramiento integral de expertos en seguridad de datos y especialistas legales. Mapeamos cada dato personal que tu empresa maneja y creamos un plan de proteccion a medida.",
@@ -79,9 +85,55 @@ export const translations = {
         desc: "Revision y evaluacion de la naturaleza y validez de las solicitudes de acceso a datos personales. Gestionamos el proceso completo dentro de los plazos legales.",
       },
     ],
-    pillarsCta: "EMPIEZA AHORA",
-    pillarsCtaHeadline: "Protege. Cumple. Crece.",
-    pillarsCtaSub: "Invierte en la seguridad de tu empresa",
+
+    // Qualification form
+    qualHeadline: "Descubre si tu empresa necesita proteccion de datos",
+    qualSubtitle: "Completa este formulario rapido y te diremos exactamente como podemos ayudarte.",
+    qualCompanyName: "Nombre de la empresa",
+    qualContactName: "Nombre de contacto",
+    qualEmail: "Email",
+    qualCompanySize: "Tamano de la empresa",
+    qualCompanySizeOptions: [
+      { value: "", label: "Selecciona una opcion" },
+      { value: "1-10", label: "1-10 empleados" },
+      { value: "11-50", label: "11-50 empleados" },
+      { value: "51-200", label: "51-200 empleados" },
+      { value: "201-500", label: "201-500 empleados" },
+      { value: "500+", label: "Mas de 500 empleados" },
+    ],
+    qualIndustry: "Industria",
+    qualIndustryOptions: [
+      { value: "", label: "Selecciona una opcion" },
+      { value: "tech", label: "Tecnologia / SaaS" },
+      { value: "health", label: "Salud / MedTech" },
+      { value: "finance", label: "Finanzas / FinTech" },
+      { value: "ecommerce", label: "E-Commerce / Retail" },
+      { value: "other", label: "Otra industria" },
+    ],
+    qualCompliance: "Estado de cumplimiento actual",
+    qualComplianceOptions: [
+      { value: "", label: "Selecciona una opcion" },
+      { value: "none", label: "No hemos empezado" },
+      { value: "partial", label: "Cumplimiento parcial" },
+      { value: "audit", label: "Necesitamos una auditoria" },
+      { value: "breach", label: "Hemos tenido una brecha" },
+    ],
+    qualBudget: "Presupuesto estimado mensual",
+    qualBudgetOptions: [
+      { value: "", label: "Selecciona una opcion" },
+      { value: "low", label: "Menos de 500 EUR/mes" },
+      { value: "mid", label: "500 - 2.000 EUR/mes" },
+      { value: "high", label: "2.000 - 5.000 EUR/mes" },
+      { value: "enterprise", label: "Mas de 5.000 EUR/mes" },
+    ],
+    qualSubmit: "EVALUAR MI EMPRESA",
+    qualErrorRequired: "Este campo es obligatorio",
+    qualErrorEmail: "Introduce un email valido",
+    qualQualifiedTitle: "Tu empresa necesita proteccion profesional",
+    qualQualifiedMsg: "Basado en tus respuestas, tu empresa se beneficiaria significativamente de nuestros servicios. Agenda una consulta gratuita con nuestro equipo.",
+    qualQualifiedCta: "AGENDAR CONSULTA GRATUITA",
+    qualNotQualifiedTitle: "Recursos enviados a tu email",
+    qualNotQualifiedMsg: "Hemos enviado una seleccion de recursos gratuitos para ayudarte a empezar con el cumplimiento de GDPR. Si necesitas ayuda en el futuro, estamos aqui.",
 
     // Testimonials section
     testimonialsLabel: "TESTIMONIOS",
@@ -177,50 +229,56 @@ export const translations = {
     cta: "BOOK YOUR FREE CONSULTATION",
     scrollLabel: "Discover how we protect you",
 
-    // Comparison section
-    compHeadline:
-      "Stop improvising with data protection, ignoring regulations and risking massive fines",
-    compSubtitle:
-      "There is a professional way to protect your business that actually works, is sustainable and turns compliance into a competitive advantage.",
-    oldWayTitle: "THE OLD WAY",
-    newWayTitle: "WITH LEXAVY",
-    oldWayItems: [
-      "We don't know what data we collect",
-      "Privacy policy copied from the internet",
-      "We hope nothing happens",
-      "We react when there's already a fine",
-      "The DPO is an untrained internal employee",
-      "Contracts without GDPR clauses",
-      "We ignore access requests",
-      "Pray there's no data breach",
-    ],
-    newWayItems: [
-      "Complete personal data audit",
-      "Custom policies, 100% compliant",
-      "Proactive compliance strategy",
-      "Continuous prevention and monitoring",
-      "Certified independent external DPO",
-      "Contracts aligned and GDPR-proof",
-      "Professional DSAR request management",
-      "Breach response plan ready to go",
-    ],
-    oldBadges: [
-      { text: "How most do it", pos: 0 },
-      { text: "Exhausting", pos: 4 },
-      { text: "I give up", pos: 7 },
-    ],
-    newBadges: [
-      { text: "The right method", pos: 0 },
-      { text: "Compliant from day 1", pos: 3 },
-      { text: "Total peace of mind", pos: 6 },
+    // Lead capture form
+    leadFormTitle: "Free download: GDPR Compliance Guide",
+    leadFormSubtitle: "Get our step-by-step guide to protect your business",
+    leadFormName: "Full name",
+    leadFormEmail: "Corporate email",
+    leadFormCompany: "Company name",
+    leadFormSubmit: "DOWNLOAD FREE GUIDE",
+    leadFormDisclaimer: "No spam. We comply with GDPR.",
+    leadFormSuccess: "Guide sent to your email",
+    leadFormSuccessMsg: "Check your inbox. If you can't find it, check your spam folder.",
+    leadFormErrorName: "Name is required",
+    leadFormErrorEmail: "Enter a valid email",
+    leadFormErrorCompany: "Company name is required",
+
+    // Social proof section
+    socialProofLabel: "TRUSTED BY",
+    socialProofLogos: ["TechCorp", "DataSafe EU", "CloudFirst", "SecureNet", "PrivacyOne", "CompliHub"],
+    socialProofStats: [
+      { value: "50+", label: "Companies protected" },
+      { value: "99%", label: "Compliance rate" },
+      { value: "15+", label: "Years of experience" },
     ],
 
-    // Pillars section
-    pillarsHeadline: "Compliance + Strategy = Total Peace of Mind",
-    pillarsSubtitle:
-      "There is a reason why some companies operate with confidence, avoid fines and turn privacy into a competitive advantage. It all comes down to strategy and systems.",
-    pillarsRoadmap: "Our roadmap will guide you to compliance",
-    pillarsCards: [
+    // Pain points section
+    painPointsHeadline: "The problems you face without proper data protection",
+    painPointsSubtitle: "Every day without compliance is a day at risk. These are the real problems we see in companies like yours.",
+    painPoints: [
+      {
+        title: "You don't know what data you collect or where it is",
+        desc: "Without a clear mapping of personal data, your company operates blind. You can't protect what you don't know about, and any inspection would leave you exposed.",
+      },
+      {
+        title: "Your privacy policies are generic or nonexistent",
+        desc: "A policy copied from the internet doesn't protect you legally. Authorities look for customized documentation that reflects your actual data processing activities.",
+      },
+      {
+        title: "You react instead of prevent",
+        desc: "Waiting for a fine or a data breach is the most expensive strategy. The cost of prevention is a fraction of the cost of remediation.",
+      },
+      {
+        title: "You have no breach response plan",
+        desc: "When a data breach happens, you have 72 hours to notify the authority. Without a ready protocol, every hour counts and fines multiply.",
+      },
+    ],
+    painPointsCta: "PROTECT YOUR BUSINESS NOW",
+
+    // Differentiators section
+    diffHeadline: "Why companies choose Lexavy",
+    diffSubtitle: "We combine legal expertise, technology and strategy to deliver a comprehensive data protection service.",
+    diffCards: [
       {
         title: "Data Privacy Management",
         desc: "Comprehensive advice from data security experts and legal specialists. We map every piece of personal data your company handles and create a tailored protection plan.",
@@ -246,9 +304,55 @@ export const translations = {
         desc: "Reviewing and assessing the nature and validity of personal data access requests. We manage the complete process within legal deadlines.",
       },
     ],
-    pillarsCta: "START NOW",
-    pillarsCtaHeadline: "Protect. Comply. Grow.",
-    pillarsCtaSub: "Invest in your company's security",
+
+    // Qualification form
+    qualHeadline: "Find out if your company needs data protection",
+    qualSubtitle: "Complete this quick form and we'll tell you exactly how we can help.",
+    qualCompanyName: "Company name",
+    qualContactName: "Contact name",
+    qualEmail: "Email",
+    qualCompanySize: "Company size",
+    qualCompanySizeOptions: [
+      { value: "", label: "Select an option" },
+      { value: "1-10", label: "1-10 employees" },
+      { value: "11-50", label: "11-50 employees" },
+      { value: "51-200", label: "51-200 employees" },
+      { value: "201-500", label: "201-500 employees" },
+      { value: "500+", label: "500+ employees" },
+    ],
+    qualIndustry: "Industry",
+    qualIndustryOptions: [
+      { value: "", label: "Select an option" },
+      { value: "tech", label: "Technology / SaaS" },
+      { value: "health", label: "Healthcare / MedTech" },
+      { value: "finance", label: "Finance / FinTech" },
+      { value: "ecommerce", label: "E-Commerce / Retail" },
+      { value: "other", label: "Other industry" },
+    ],
+    qualCompliance: "Current compliance status",
+    qualComplianceOptions: [
+      { value: "", label: "Select an option" },
+      { value: "none", label: "We haven't started" },
+      { value: "partial", label: "Partially compliant" },
+      { value: "audit", label: "We need an audit" },
+      { value: "breach", label: "We've had a breach" },
+    ],
+    qualBudget: "Estimated monthly budget",
+    qualBudgetOptions: [
+      { value: "", label: "Select an option" },
+      { value: "low", label: "Less than 500 EUR/month" },
+      { value: "mid", label: "500 - 2,000 EUR/month" },
+      { value: "high", label: "2,000 - 5,000 EUR/month" },
+      { value: "enterprise", label: "More than 5,000 EUR/month" },
+    ],
+    qualSubmit: "EVALUATE MY COMPANY",
+    qualErrorRequired: "This field is required",
+    qualErrorEmail: "Enter a valid email",
+    qualQualifiedTitle: "Your company needs professional protection",
+    qualQualifiedMsg: "Based on your answers, your company would significantly benefit from our services. Book a free consultation with our team.",
+    qualQualifiedCta: "BOOK FREE CONSULTATION",
+    qualNotQualifiedTitle: "Resources sent to your email",
+    qualNotQualifiedMsg: "We've sent a selection of free resources to help you get started with GDPR compliance. If you need help in the future, we're here.",
 
     // Testimonials section
     testimonialsLabel: "TESTIMONIALS",

@@ -1,4 +1,6 @@
 import { useLang } from "../LanguageContext";
+import useScrollAnimation from "../hooks/useScrollAnimation";
+import ImagePlaceholder from "./ImagePlaceholder";
 
 const INITIALS_COLORS = [
   "bg-[#00C2D1]",
@@ -28,9 +30,14 @@ function Avatar({ name, index }) {
 function TestimonialCard({ testimonial, index }) {
   return (
     <div className="rounded-xl bg-[#0d1f2d] border border-[#1B3A4B]/60 p-5 flex flex-col gap-3 hover:border-[#1B3A4B] transition-colors">
-      {/* Header: avatar + name + company + date */}
+      {/* Header: avatar + image placeholder + name + company + date */}
       <div className="flex items-center gap-3">
         <Avatar name={testimonial.name} index={index} />
+        <ImagePlaceholder
+          label=""
+          aspectRatio="1/1"
+          className="w-9 h-9 rounded-full"
+        />
         <div className="min-w-0">
           <div className="flex items-baseline gap-2 flex-wrap">
             <span className="font-semibold text-[#EAF2F7] text-sm">
@@ -105,26 +112,41 @@ function TestimonialCard({ testimonial, index }) {
 
 export default function TestimonialsSection() {
   const { t } = useLang();
+  const headlineAnim = useScrollAnimation();
+  const gridAnim = useScrollAnimation();
 
   return (
     <section className="relative py-20 px-4 bg-[#0B1620]">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 
-      {/* Label */}
-      <p className="text-center text-xs font-semibold tracking-[0.2em] text-[#9FB3C8]/60 uppercase mb-4">
-        {t.testimonialsLabel}
-      </p>
+      {/* Label + Headline */}
+      <div
+        ref={headlineAnim.ref}
+        className={`transition-all duration-700 ease-out ${headlineAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      >
+        <p className="text-center text-xs font-semibold tracking-[0.2em] text-[#9FB3C8]/60 uppercase mb-4">
+          {t.testimonialsLabel}
+        </p>
 
-      {/* Headline */}
-      <h2 className="max-w-3xl mx-auto text-center text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#EAF2F7]">
-        {t.testimonialsHeadline}
-      </h2>
+        <h2 className="max-w-3xl mx-auto text-center text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#EAF2F7]">
+          {t.testimonialsHeadline}
+        </h2>
+      </div>
 
       {/* Testimonial grid */}
-      <div className="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div
+        ref={gridAnim.ref}
+        className="max-w-6xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
         {t.testimonials.map((testimonial, i) => (
-          <TestimonialCard key={i} testimonial={testimonial} index={i} />
+          <div
+            key={i}
+            className={`transition-all duration-700 ease-out ${gridAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            style={{ transitionDelay: `${i * 100}ms` }}
+          >
+            <TestimonialCard testimonial={testimonial} index={i} />
+          </div>
         ))}
       </div>
     </section>
