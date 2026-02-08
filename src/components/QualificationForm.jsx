@@ -8,37 +8,15 @@ const selectClass =
 const inputClass =
   "w-full rounded-lg border border-[#1B3A4B] bg-[#0B1620] px-4 py-2.5 text-sm text-[#EAF2F7] placeholder-[#9FB3C8]/50 outline-none focus:border-[#00C2D1]/50 transition-colors";
 
-function scoreSubmission(form) {
-  let score = 0;
-
-  // Company size scoring (0-3)
-  const sizeScores = { "1-49": 0, "50-200": 1, "201-1000": 2, "1001-5000": 3, "5000+": 3 };
-  score += sizeScores[form.companySize] || 0;
-
-  // Compliance status scoring (0-4)
-  const complianceScores = { none: 2, partial: 2, audit: 3, incident: 4 };
-  score += complianceScores[form.compliance] || 0;
-
-  // Role scoring (0-2)
-  const roleScores = { gc: 2, ciso: 2, cpo: 2, cro: 1, cto: 1, other: 0 };
-  score += roleScores[form.role] || 0;
-
-  return score;
-}
-
 export default function QualificationForm() {
   const { t } = useLang();
   const headlineAnim = useScrollAnimation();
   const contentAnim = useScrollAnimation();
 
   const [form, setForm] = useState({
-    companyName: "",
     contactName: "",
     email: "",
     role: "",
-    companySize: "",
-    industry: "",
-    compliance: "",
   });
   const [errors, setErrors] = useState({});
   const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
@@ -57,12 +35,7 @@ export default function QualificationForm() {
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length === 0) {
-      const score = scoreSubmission(form);
-      if (score >= 6) {
-        window.location.hash = "#/qualified";
-      } else {
-        window.location.hash = "#/thank-you";
-      }
+      window.location.hash = "#/qualified";
     }
   };
 
@@ -108,13 +81,6 @@ export default function QualificationForm() {
           className="flex-1 w-full rounded-2xl border border-[#1B3A4B] bg-[#102635] p-8"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Company name */}
-            <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualCompanyName}</label>
-              <input type="text" value={form.companyName} onChange={update("companyName")} className={inputClass} />
-              {errors.companyName && <p className="mt-1 text-xs text-red-400">{errors.companyName}</p>}
-            </div>
-
             {/* Contact name */}
             <div>
               <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualContactName} <span className="text-[#00C2D1]">*</span></label>
@@ -130,7 +96,7 @@ export default function QualificationForm() {
             </div>
 
             {/* Role */}
-            <div>
+            <div className="sm:col-span-2">
               <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualRole} <span className="text-[#00C2D1]">*</span></label>
               <select value={form.role} onChange={update("role")} className={selectClass}>
                 {t.qualRoleOptions.map((opt) => (
@@ -139,41 +105,6 @@ export default function QualificationForm() {
               </select>
               {errors.role && <p className="mt-1 text-xs text-red-400">{errors.role}</p>}
             </div>
-
-            {/* Company size */}
-            <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualCompanySize}</label>
-              <select value={form.companySize} onChange={update("companySize")} className={selectClass}>
-                {t.qualCompanySizeOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              {errors.companySize && <p className="mt-1 text-xs text-red-400">{errors.companySize}</p>}
-            </div>
-
-
-            {/* Industry */}
-            <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualIndustry}</label>
-              <select value={form.industry} onChange={update("industry")} className={selectClass}>
-                {t.qualIndustryOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              {errors.industry && <p className="mt-1 text-xs text-red-400">{errors.industry}</p>}
-            </div>
-
-            {/* Compliance status */}
-            <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualCompliance}</label>
-              <select value={form.compliance} onChange={update("compliance")} className={selectClass}>
-                {t.qualComplianceOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              {errors.compliance && <p className="mt-1 text-xs text-red-400">{errors.compliance}</p>}
-            </div>
-
           </div>
 
           <button

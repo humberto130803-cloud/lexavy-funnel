@@ -54,6 +54,22 @@ export default function QualifiedPage() {
           {renderBold(t.qualQualifiedSubtitle)}
         </p>
 
+        {/* Ebook download */}
+        <div className="mt-8 flex justify-center">
+          <a
+            href="/ebook/data-protection-ebook.pdf"
+            download
+            className="inline-flex items-center gap-2 rounded-lg bg-[#00C2D1] px-8 py-3.5 text-sm font-bold tracking-wider text-[#0B1620] hover:bg-[#00A8B5] transition-colors shadow-lg shadow-[#00C2D1]/20"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            {t.qualQualifiedDownload}
+          </a>
+        </div>
+
         {/* Select Your Time */}
         <h2 className="mt-12 text-2xl font-bold text-[#EAF2F7]">
           {t.qualQualifiedCalendlyTitle}

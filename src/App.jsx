@@ -10,7 +10,6 @@ import TestimonialsSection from "./components/TestimonialsSection";
 import FaqSection from "./components/FaqSection";
 import BottomCta from "./components/BottomCta";
 import Footer from "./components/Footer";
-import ThankYouPage from "./components/ThankYouPage";
 import QualifiedPage from "./components/QualifiedPage";
 
 function App() {
@@ -21,15 +20,6 @@ function App() {
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
-
-  if (page === "#/thank-you") {
-    return (
-      <LanguageProvider>
-        <LanguageToggle />
-        <ThankYouPage />
-      </LanguageProvider>
-    );
-  }
 
   if (page === "#/qualified") {
     return (
