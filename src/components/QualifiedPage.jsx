@@ -19,11 +19,14 @@ export default function QualifiedPage() {
   const calendlyRef = useRef(null);
 
   useEffect(() => {
+    const el = calendlyRef.current;
+
     const initCalendly = () => {
-      if (window.Calendly && calendlyRef.current) {
+      if (window.Calendly && el) {
+        el.innerHTML = "";
         window.Calendly.initInlineWidget({
           url: "https://calendly.com/andrerv1305/new-meeting?hide_gdpr_banner=1&background_color=102635&text_color=eaf2f7&primary_color=00c2d1",
-          parentElement: calendlyRef.current,
+          parentElement: el,
         });
       }
     };
@@ -39,6 +42,8 @@ export default function QualifiedPage() {
       }, 200);
       return () => clearInterval(check);
     }
+
+    return () => { if (el) el.innerHTML = ""; };
   }, []);
 
   return (
