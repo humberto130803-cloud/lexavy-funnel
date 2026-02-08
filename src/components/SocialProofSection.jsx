@@ -114,7 +114,7 @@ export default function SocialProofSection() {
                   key={activeIndex}
                   src={photo}
                   alt={member.name}
-                  className="w-full h-72 md:h-full object-cover object-top"
+                  className="w-full h-80 md:h-full object-cover object-[center_20%]"
                   loading="lazy"
                 />
                 {/* Badges overlay */}

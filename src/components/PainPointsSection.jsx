@@ -55,19 +55,10 @@ function PainPointRow({ point, index }) {
   return (
     <div
       ref={anim.ref}
-      className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
+      className={`flex flex-col items-center gap-8 md:gap-12 ${imageLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
     >
-      {imageLeft ? (
-        <>
-          {imageBlock}
-          {textBlock}
-        </>
-      ) : (
-        <>
-          {textBlock}
-          {imageBlock}
-        </>
-      )}
+      {imageBlock}
+      {textBlock}
     </div>
   );
 }
