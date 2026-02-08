@@ -13,7 +13,7 @@ const BRAND_LOGOS = [
 ];
 
 const TEAM_PHOTOS = [
-  "https://lexavy.net/wp-content/uploads/2025/07/807bd856-d9a7-4291-b626-68837e33aa53-2.webp",
+  "/images/maria-lobato.png",
   "https://lexavy.net/wp-content/uploads/2025/07/Firefly-20250425111748-2.webp",
   "https://lexavy.net/wp-content/uploads/2025/09/Generated-Image-September-21-2025-7_14PM-1-e1760147961352.png",
 ];

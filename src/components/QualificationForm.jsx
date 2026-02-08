@@ -9,11 +9,6 @@ const inputClass =
   "w-full rounded-lg border border-[#1B3A4B] bg-[#0B1620] px-4 py-2.5 text-sm text-[#EAF2F7] placeholder-[#9FB3C8]/50 outline-none focus:border-[#00C2D1]/50 transition-colors";
 
 function scoreSubmission(form) {
-  // Auto-disqualify: small company + low revenue
-  if (form.companySize === "1-49" && (form.revenue === "less-5k" || form.revenue === "5k-10k")) {
-    return 0;
-  }
-
   let score = 0;
 
   // Company size scoring (0-3)
@@ -24,17 +19,9 @@ function scoreSubmission(form) {
   const complianceScores = { none: 2, partial: 2, audit: 3, incident: 4 };
   score += complianceScores[form.compliance] || 0;
 
-  // Region scoring (0-2)
-  const regionScores = { us: 1, eu: 2, latam: 1, multi: 2 };
-  score += regionScores[form.region] || 0;
-
   // Role scoring (0-2)
   const roleScores = { gc: 2, ciso: 2, cpo: 2, cro: 1, cto: 1, other: 0 };
   score += roleScores[form.role] || 0;
-
-  // Revenue scoring (0-3)
-  const revenueScores = { "less-5k": 0, "5k-10k": 0, "10k-50k": 1, "50k-100k": 2, "100k-250k": 3, "250k+": 3 };
-  score += revenueScores[form.revenue] || 0;
 
   return score;
 }
@@ -50,26 +37,18 @@ export default function QualificationForm() {
     email: "",
     role: "",
     companySize: "",
-    region: "",
     industry: "",
     compliance: "",
-    revenue: "",
   });
   const [errors, setErrors] = useState({});
   const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
 
   const validate = () => {
     const errs = {};
-    if (!form.companyName.trim()) errs.companyName = t.qualErrorRequired;
     if (!form.contactName.trim()) errs.contactName = t.qualErrorRequired;
     if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       errs.email = t.qualErrorEmail;
     if (!form.role) errs.role = t.qualErrorRequired;
-    if (!form.companySize) errs.companySize = t.qualErrorRequired;
-    if (!form.region) errs.region = t.qualErrorRequired;
-    if (!form.industry) errs.industry = t.qualErrorRequired;
-    if (!form.compliance) errs.compliance = t.qualErrorRequired;
-    if (!form.revenue) errs.revenue = t.qualErrorRequired;
     return errs;
   };
 
@@ -138,21 +117,21 @@ export default function QualificationForm() {
 
             {/* Contact name */}
             <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualContactName}</label>
+              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualContactName} <span className="text-[#00C2D1]">*</span></label>
               <input type="text" value={form.contactName} onChange={update("contactName")} className={inputClass} />
               {errors.contactName && <p className="mt-1 text-xs text-red-400">{errors.contactName}</p>}
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualEmail}</label>
+              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualEmail} <span className="text-[#00C2D1]">*</span></label>
               <input type="email" value={form.email} onChange={update("email")} className={inputClass} />
               {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
             </div>
 
             {/* Role */}
             <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualRole}</label>
+              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualRole} <span className="text-[#00C2D1]">*</span></label>
               <select value={form.role} onChange={update("role")} className={selectClass}>
                 {t.qualRoleOptions.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -172,16 +151,6 @@ export default function QualificationForm() {
               {errors.companySize && <p className="mt-1 text-xs text-red-400">{errors.companySize}</p>}
             </div>
 
-            {/* Region */}
-            <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualRegion}</label>
-              <select value={form.region} onChange={update("region")} className={selectClass}>
-                {t.qualRegionOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              {errors.region && <p className="mt-1 text-xs text-red-400">{errors.region}</p>}
-            </div>
 
             {/* Industry */}
             <div>
@@ -205,16 +174,6 @@ export default function QualificationForm() {
               {errors.compliance && <p className="mt-1 text-xs text-red-400">{errors.compliance}</p>}
             </div>
 
-            {/* Monthly Revenue */}
-            <div>
-              <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.qualRevenue}</label>
-              <select value={form.revenue} onChange={update("revenue")} className={selectClass}>
-                {t.qualRevenueOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              {errors.revenue && <p className="mt-1 text-xs text-red-400">{errors.revenue}</p>}
-            </div>
           </div>
 
           <button
