@@ -1,6 +1,7 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
+
 export default function BottomCta() {
   const { t } = useLang();
   const anim = useScrollAnimation();
@@ -10,9 +11,8 @@ export default function BottomCta() {
   };
 
   return (
-    <section className="relative py-20 px-4 bg-[#0B1620]">
+    <section className="relative py-20 px-4 bg-[#0B1620] overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
-
       <div
         ref={anim.ref}
         className={`max-w-2xl mx-auto text-center transition-all duration-700 ease-out ${anim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}

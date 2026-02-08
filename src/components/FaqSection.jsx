@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
+
 function FaqItem({ question, answer, index }) {
   const [open, setOpen] = useState(false);
   const anim = useScrollAnimation();
@@ -63,7 +64,7 @@ export default function FaqSection() {
   const titleAnim = useScrollAnimation();
 
   return (
-    <section className="relative py-20 px-4 bg-[#102635]">
+    <section className="relative py-20 px-4 bg-[#102635] overflow-hidden">
       {/* Title */}
       <div
         ref={titleAnim.ref}

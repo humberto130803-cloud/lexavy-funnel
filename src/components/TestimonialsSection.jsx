@@ -1,34 +1,24 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
-const INITIALS_COLORS = [
-  "bg-[#00C2D1]",
-  "bg-emerald-500",
-  "bg-violet-500",
+
+const AVATAR_IMAGES = [
+  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
 ];
-
-function Avatar({ name, index }) {
-  const initials = name
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .slice(0, 2);
-
-  return (
-    <div
-      className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-[#0B1620] shrink-0 ${INITIALS_COLORS[index % INITIALS_COLORS.length]}`}
-    >
-      {initials}
-    </div>
-  );
-}
 
 function TestimonialCard({ testimonial, index }) {
   return (
     <div className="rounded-xl bg-[#0d1f2d] border border-[#1B3A4B]/60 p-5 flex flex-col gap-3 hover:border-[#1B3A4B] transition-colors">
       {/* Header: avatar + name + company */}
       <div className="flex items-center gap-3">
-        <Avatar name={testimonial.name} index={index} />
+        <img
+          src={AVATAR_IMAGES[index % AVATAR_IMAGES.length]}
+          alt={testimonial.name}
+          className="w-10 h-10 rounded-full object-cover shrink-0"
+          loading="lazy"
+        />
         <div className="min-w-0">
           <div className="flex items-baseline gap-2 flex-wrap">
             <span className="font-semibold text-[#EAF2F7] text-sm">
@@ -68,14 +58,14 @@ export default function TestimonialsSection() {
   const gridAnim = useScrollAnimation();
 
   return (
-    <section className="relative py-20 px-4 bg-[#0B1620]">
+    <section className="relative py-20 px-4 bg-[#0B1620] overflow-hidden">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 
       {/* Label + Headline */}
       <div
         ref={headlineAnim.ref}
-        className={`transition-all duration-700 ease-out ${headlineAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        className={`relative z-10 transition-all duration-700 ease-out ${headlineAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <p className="text-center text-xs font-semibold tracking-[0.2em] text-[#9FB3C8]/60 uppercase mb-4">
           {t.testimonialsLabel}
@@ -89,7 +79,7 @@ export default function TestimonialsSection() {
       {/* Testimonial grid */}
       <div
         ref={gridAnim.ref}
-        className="max-w-5xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-3 gap-4"
+        className="relative z-10 max-w-5xl mx-auto mt-14 grid grid-cols-1 md:grid-cols-3 gap-4"
       >
         {t.testimonials.map((testimonial, i) => (
           <div

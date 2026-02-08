@@ -1,6 +1,7 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
+
 export default function HeroSection() {
   const { t } = useLang();
   const badgeAnim = useScrollAnimation();
@@ -15,7 +16,6 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-[#0B1620] overflow-hidden">
       {/* Subtle radial glow behind content */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00C2D1]/5 rounded-full blur-[120px] pointer-events-none" />
-
       <div className="relative max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         {/* Left column: Badge, Headline, Subtitle, Value Bullets, CTA */}
         <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">

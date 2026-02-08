@@ -1,6 +1,7 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
+
 // Shield + lock: Data Protection & Privacy
 function ShieldLockIcon() {
   return (
@@ -50,7 +51,7 @@ export default function DifferentiatorsSection() {
   const mechAnim = useScrollAnimation();
 
   return (
-    <section className="relative py-20 px-4 bg-[#102635]">
+    <section className="relative py-20 px-4 bg-[#102635] overflow-hidden">
       {/* Headline */}
       <div
         ref={headlineAnim.ref}

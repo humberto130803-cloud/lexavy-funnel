@@ -3,7 +3,7 @@ export const translations = {
     lang: "ES",
     langSwitch: "EN",
     badge: "Protección de Datos, Gobernanza de IA y Ciberseguridad",
-    headline: "Innova más rápido. ",
+    headline: "Escala más rápido. ",
     headlineAccent: "Con gobernanza defensible de IA, datos y ciberseguridad.",
     subtitle:
       "Lexavy actúa como una función legal integrada en privacidad, gobernanza de IA y ciberseguridad, entregando marcos prácticos, rendición de cuentas y soporte de ejecución para que tu organización avance rápido sin sorpresas regulatorias.",
@@ -16,7 +16,7 @@ export const translations = {
     ],
     cta: "DESCUBRE EL PATRÓN DETRÁS DE LOS FALLOS DE GOBERNANZA",
     scrollLabel: "Ve cómo trabajamos",
-    vslTitle: "La verdadera razón por la que la adopción de IA se vuelve riesgosa no es el modelo. Es la falta de rendición de cuentas operativa.",
+    vslTitle: "Cómo las empresas serias escalan IA y datos sin perder el control",
     vslBullets: [
       "Por qué las políticas solas fallan bajo presión regulatoria",
       "El patrón oculto de fallo que la mayoría de las empresas no ven hasta que es tarde",
@@ -26,29 +26,45 @@ export const translations = {
     qualifier: "Esto está diseñado para equipos de mercado medio y empresarial que operan en múltiples jurisdicciones, donde las iniciativas de IA y datos conllevan exposición regulatoria real.",
 
     // Social proof section
-    socialProofLabel: "CONFÍAN EN NOSOTROS",
-    socialProofLogos: ["TechCorp", "DataSafe EU", "CloudFirst", "SecureNet", "PrivacyOne", "CompliHub"],
+    socialProofLabel: "COMPLIANCE & GOVERNANCE",
     socialProofStats: [
-      { value: "20+", label: "Años de experiencia" },
-      { value: "Multi", label: "Experiencia transfronteriza" },
-      { value: "Senior", label: "Entrega liderada por senior" },
+      { value: "+10", label: "Años de experiencia" },
+      { value: "+500", label: "Casos resueltos" },
+      { value: "+20", label: "Abogados expertos" },
+    ],
+    socialProofTeam: [
+      {
+        name: "Maria Lobato",
+        role: "CEO / Founder",
+        bio: "Abogada internacional con doble cualificación (España y UK) con amplia experiencia liderando funciones de privacidad para empresas globales. Reconocida experta en Privacidad, Protección de Datos y Ciberseguridad. Incluida en el DPO 200, la lista de \"Powerful Women in IP\" y destacada como una de las líderes más influyentes en ciberseguridad.",
+      },
+      {
+        name: "Luis Navarrete",
+        role: "Co-Founder / Data & Marketing",
+        bio: "Head of Digital Marketing en Liberty Latin America, una empresa de telecomunicaciones de $4.5B que opera en más de 20 mercados en Latinoamérica. Con formación en ciencias de la computación y más de 20 años de experiencia, aporta profunda experiencia en marketing digital, tecnología y liderazgo empresarial. Ex-LEGO, orador frecuente y miembro del consejo asesor del Institute of Practitioners in Advertising.",
+      },
+      {
+        name: "Maria Mc Reddie",
+        role: "Partner / Sr Legal Counsel",
+        bio: "Abogada internacional con más de 15 años de experiencia en derecho corporativo, M&A, transacciones transfronterizas y cumplimiento regulatorio. En Lexavy, asesora en protección de datos, regulación de IA, derecho digital y ciberseguridad en múltiples jurisdicciones. Reconocida por su visión estratégica, independencia y discreción como asesora de confianza para equipos de liderazgo senior.",
+      },
     ],
 
     // Pain points section
-    painPointsHeadline: "Tu crecimiento está escalando más rápido que tus controles.",
+    painPointsHeadline: "El crecimiento sin control no escala. Colapsa bajo escrutinio.",
     painPointsSubtitle: "",
     painPoints: [
       {
-        title: "Los proyectos de IA se lanzan, pero la responsabilidad no está clara",
-        desc: "Los modelos entran en producción sin roles definidos, derechos de decisión ni rutas de escalamiento. Cuando algo falla, nadie sabe quién es responsable y el regulador no aceptará esa respuesta.",
+        title: "Propiedad clara sobre IA antes de que algo falle",
+        desc: "Define quién decide, quién aprueba y quién es responsable cuando la IA entra en producción. Sin ambigüedad. Sin vacíos de responsabilidad. Sin explicaciones improvisadas cuando los reguladores pregunten.",
       },
       {
-        title: "Los datos se mueven entre fronteras, pero la lógica de transferencia es frágil",
-        desc: "Las transferencias transfronterizas dependen de cláusulas contractuales estándar desactualizadas o supuestos no verificados. Una sola auditoría puede revelar brechas que exponen a toda la organización.",
+        title: "Flujos de datos globales sin exposición oculta",
+        desc: "Estructura transferencias transfronterizas de datos que resistan auditorías, reguladores y socios. Menos supuestos. Menos parches legales. Más certeza operativa a escala.",
       },
       {
-        title: "Un incidente se convierte en un evento a nivel de junta directiva",
-        desc: "Sin protocolos de respuesta claros, roles definidos ni práctica previa, una brecha de datos o un incidente de IA escala de operativo a crisis reputacional en horas.",
+        title: "Los incidentes se mantienen operativos, no reputacionales",
+        desc: "Con protocolos de respuesta claros y roles definidos, los incidentes se manejan sin pánico ni escalamiento. Lo que podría llegar a la junta se contiene temprano.",
       },
     ],
     painPointsCta: "DESCUBRE SI SOMOS UN FIT",
@@ -88,7 +104,7 @@ export const translations = {
     diffMechanismDesc: "Asesoría integrada + sprints de ejecución + operaciones continuas. Operamos como una función legal flexible e integrada: comenzamos con un diagnóstico, ejecutamos en sprints enfocados y nos mantenemos como soporte operativo continuo para mantener la gobernanza viva y adaptativa.",
 
     // Qualification form
-    qualHeadline: "Descubre si Lexavy es el fit correcto para tu organización",
+    qualHeadline: "Consigue tu copia del ebook gratuita",
     qualSubtitle: "Completa este breve formulario. Solo aceptamos un número limitado de compromisos para asegurar entrega liderada por senior y continuidad.",
     qualCompanyName: "Nombre de la empresa",
     qualContactName: "Nombre de contacto",
@@ -106,6 +122,7 @@ export const translations = {
     qualCompanySize: "Tamaño de la empresa",
     qualCompanySizeOptions: [
       { value: "", label: "Selecciona una opción" },
+      { value: "1-49", label: "Menos de 50 empleados" },
       { value: "50-200", label: "50-200 empleados" },
       { value: "201-1000", label: "201-1,000 empleados" },
       { value: "1001-5000", label: "1,001-5,000 empleados" },
@@ -136,18 +153,37 @@ export const translations = {
       { value: "audit", label: "Necesitamos una auditoría / evaluación" },
       { value: "incident", label: "Estamos respondiendo a un incidente" },
     ],
+    qualRevenue: "Ingreso mensual (aproximado)",
+    qualRevenueOptions: [
+      { value: "", label: "Selecciona una opción" },
+      { value: "less-5k", label: "Menos de $5k/mes" },
+      { value: "5k-10k", label: "$5k - $10k/mes" },
+      { value: "10k-50k", label: "$10k - $50k/mes" },
+      { value: "50k-100k", label: "$50k - $100k/mes" },
+      { value: "100k-250k", label: "$100k - $250k/mes" },
+      { value: "250k+", label: "$250k+/mes" },
+    ],
     qualSubmit: "ENVIAR FORMULARIO",
     qualErrorRequired: "Este campo es obligatorio",
     qualErrorEmail: "Introduce un email corporativo válido",
-    qualQualifiedTitle: "Tu organización califica para una evaluación",
-    qualQualifiedMsg: "Basado en tus respuestas, tu organización se beneficiaría significativamente de nuestros servicios de gobernanza integrada. Agendaremos una sesión de diagnóstico con nuestro equipo senior.",
-    qualQualifiedCta: "AGENDAR SESIÓN DE DIAGNÓSTICO",
-    qualNotQualifiedTitle: "Recursos enviados a tu email",
-    qualNotQualifiedMsg: "Hemos enviado una selección de recursos para ayudarte a comenzar con gobernanza de datos y IA. Si tus necesidades evolucionan, estamos aquí.",
+    qualQualifiedTitle: "Sesión estratégica gratuita de 30 min: Convierte el riesgo en control operativo",
+    qualQualifiedSubtitle: "Te hemos identificado como un excelente candidato para una **sesión de mapeo de gobernanza de 30 minutos** diseñada para ejecutivos responsables de riesgo en IA, datos, privacidad y seguridad. Esto no es teoría, es una conversación enfocada que descubre puntos ciegos y crea un camino defensible hacia adelante.",
+    qualQualifiedCalendlyTitle: "Selecciona tu horario",
+    qualQualifiedWhyTitle: "Por qué esto importa",
+    qualQualifiedWhyIntro: "En esta sesión, abordaremos los riesgos que más tropiezan al liderazgo:",
+    qualQualifiedWhyBullets: [
+      { bold: "Propiedad de decisiones poco clara", rest: " sobre resultados de IA y datos" },
+      { bold: "Exposición regulatoria", rest: " por flujos transfronterizos y despliegue de modelos" },
+      { bold: "Incidentes que escalan a crisis de junta", rest: " sin gobernanza practicada" },
+      { bold: "Políticas que existen en papel", rest: " pero carecen de músculo operativo" },
+    ],
+    qualQualifiedWhyOutro: "Saldrás con **claridad sobre los próximos pasos**, no recomendaciones vagas.",
+    qualNotQualifiedTitle: "¡Tu ebook ha sido enviado!",
+    qualNotQualifiedMsg: "Hemos enviado el ebook \"Data Protection Is Not A Policy Problem\" al email que proporcionaste. Revisa tu bandeja de entrada. Si tus necesidades evolucionan, estamos aquí para ayudarte.",
 
     // Testimonials section
-    testimonialsLabel: "TESTIMONIOS",
-    testimonialsHeadline: "Qué dicen los líderes cuando la gobernanza se vuelve ejecutable",
+    testimonialsLabel: "NUESTRO EQUIPO",
+    testimonialsHeadline: "Más de 10 años de experiencia y 20 abogados de elite a tu servicio",
     testimonials: [
       {
         name: "Director Legal",
@@ -210,6 +246,18 @@ export const translations = {
     bottomCtaSubtitle: "Identifica tus brechas de mayor riesgo. Mapea la rendición de cuentas y los derechos de decisión. Define un plan de ejecución para los próximos 30 a 90 días.",
     bottomCtaButton: "COMPLETA EL FORMULARIO ARRIBA",
 
+    // Ebook section
+    ebookHeadline: "Descarga tu guía gratuita",
+    ebookDesc: "Descubre las 5 señales simples que cualquier CEO (e incluso CIOs o gerentes de TI) puede usar para evaluar si tu organización está protegida contra hackers y amenazas digitales.",
+    ebookFirstName: "Nombre*",
+    ebookLastName: "Apellido*",
+    ebookEmail: "Email*",
+    ebookCompany: "Empresa*",
+    ebookPhone: "Teléfono*",
+    ebookSubmit: "OBTENER MI COPIA GRATIS",
+    ebookThankYou: "¡Gracias! Revisa tu email para descargar la guía.",
+    ebookImageAlt: "Portada del ebook",
+
     // Footer
     footerTagline: "PROTECCIÓN DE DATOS, GOBERNANZA DE IA Y CIBERSEGURIDAD",
   },
@@ -217,7 +265,7 @@ export const translations = {
     lang: "EN",
     langSwitch: "ES",
     badge: "Data Protection, AI Governance & Cybersecurity",
-    headline: "Innovate faster. ",
+    headline: "Scale faster. ",
     headlineAccent: "With defensible AI, data, and cyber governance.",
     subtitle:
       "Lexavy acts as an embedded legal function across privacy, AI governance, and cybersecurity, delivering practical frameworks, accountability, and execution support so your organization can move fast without compliance surprises.",
@@ -230,7 +278,7 @@ export const translations = {
     ],
     cta: "SEE THE PATTERN BEHIND GOVERNANCE FAILURES",
     scrollLabel: "See how we work",
-    vslTitle: "The real reason AI adoption becomes risky is not the model. It's the lack of operating accountability.",
+    vslTitle: "How serious companies scale AI and data without losing control",
     vslBullets: [
       "Why policies alone fail under regulatory pressure",
       "The hidden failure pattern most companies don't see until it's too late",
@@ -240,29 +288,45 @@ export const translations = {
     qualifier: "This is built for mid-market and enterprise teams operating across jurisdictions, where AI and data-driven initiatives carry real regulatory exposure.",
 
     // Social proof section
-    socialProofLabel: "TRUSTED BY",
-    socialProofLogos: ["TechCorp", "DataSafe EU", "CloudFirst", "SecureNet", "PrivacyOne", "CompliHub"],
+    socialProofLabel: "COMPLIANCE & GOVERNANCE",
     socialProofStats: [
-      { value: "20+", label: "Years of experience" },
-      { value: "Multi", label: "Cross-border expertise" },
-      { value: "Senior", label: "Senior-led delivery" },
+      { value: "+10", label: "Years of experience" },
+      { value: "+500", label: "Resolved cases" },
+      { value: "+20", label: "Expert lawyers" },
+    ],
+    socialProofTeam: [
+      {
+        name: "Maria Lobato",
+        role: "CEO / Founder",
+        bio: "Dual-qualified international lawyer (Spain & UK) with extensive experience leading privacy functions for global companies. A recognized expert in Privacy, Data Protection, and Cybersecurity. Included in the DPO 200, the \"Powerful Women in IP\" list, and featured as one of the Most Influential Cybersecurity Thought Leaders.",
+      },
+      {
+        name: "Luis Navarrete",
+        role: "Co-Founder / Data & Marketing",
+        bio: "Head of Digital Marketing at Liberty Latin America, a $4.5B telecom company operating in over 20 markets across Latin America. With a background in computer science and over 20 years of experience, he brings deep expertise in digital marketing, technology, and business leadership. Formerly at LEGO, a frequent speaker and advisory board member at the Institute of Practitioners in Advertising.",
+      },
+      {
+        name: "Maria Mc Reddie",
+        role: "Partner / Sr Legal Counsel",
+        bio: "International attorney with 15+ years of experience in corporate law, M&A, cross-border transactions, and regulatory compliance. At Lexavy, she advises on data protection, AI regulation, digital law, and cybersecurity across multiple jurisdictions. Recognized for her strategic insight, independence, and discretion as a trusted advisor to senior leadership teams.",
+      },
     ],
 
     // Pain points section
-    painPointsHeadline: "Your growth is scaling faster than your controls.",
+    painPointsHeadline: "Growth without control doesn't scale. It collapses under scrutiny.",
     painPointsSubtitle: "",
     painPoints: [
       {
-        title: "AI projects ship, but ownership is unclear",
-        desc: "Models go into production without defined roles, decision rights, or escalation paths. When something fails, nobody knows who is accountable and the regulator won't accept that answer.",
+        title: "Clear ownership over AI before something breaks",
+        desc: "Define who decides, who approves, and who is accountable when AI moves into production. No ambiguity. No responsibility gaps. No improvised explanations when regulators ask.",
       },
       {
-        title: "Cross-border data moves, but transfer logic is fragile",
-        desc: "Cross-border transfers rely on outdated standard contractual clauses or unverified assumptions. A single audit can uncover gaps that expose the entire organization.",
+        title: "Global data flows without hidden exposure",
+        desc: "Structure cross-border data transfers that withstand audits, regulators, and partners. Fewer assumptions. Fewer legal patches. More operational certainty at scale.",
       },
       {
-        title: "One incident becomes a board-level event",
-        desc: "Without clear response protocols, defined roles, and prior practice, a data breach or AI incident escalates from operational to reputational crisis in hours.",
+        title: "Incidents stay operational, not reputational",
+        desc: "With clear response protocols and defined roles, incidents are handled without panic or escalation. What could reach the board gets contained early.",
       },
     ],
     painPointsCta: "SEE IF WE ARE A FIT",
@@ -302,7 +366,7 @@ export const translations = {
     diffMechanismDesc: "Embedded counsel + execution sprints + ongoing operations. We operate as a flexible embedded legal function: we start with a diagnostic, execute in focused sprints, and stay on as continuous operational support to keep governance alive and adaptive.",
 
     // Qualification form
-    qualHeadline: "See if Lexavy is the right fit for your organization",
+    qualHeadline: "Get your free ebook copy",
     qualSubtitle: "Complete this short form. We only take a limited number of engagements to ensure senior-led delivery and continuity.",
     qualCompanyName: "Company name",
     qualContactName: "Contact name",
@@ -320,6 +384,7 @@ export const translations = {
     qualCompanySize: "Company size",
     qualCompanySizeOptions: [
       { value: "", label: "Select an option" },
+      { value: "1-49", label: "Less than 50 employees" },
       { value: "50-200", label: "50-200 employees" },
       { value: "201-1000", label: "201-1,000 employees" },
       { value: "1001-5000", label: "1,001-5,000 employees" },
@@ -350,18 +415,37 @@ export const translations = {
       { value: "audit", label: "We need an audit / assessment" },
       { value: "incident", label: "We are responding to an incident" },
     ],
+    qualRevenue: "Monthly Revenue (Approximate)",
+    qualRevenueOptions: [
+      { value: "", label: "Select an option" },
+      { value: "less-5k", label: "Less than $5k/mo" },
+      { value: "5k-10k", label: "$5k - $10k/mo" },
+      { value: "10k-50k", label: "$10k - $50k/mo" },
+      { value: "50k-100k", label: "$50k - $100k/mo" },
+      { value: "100k-250k", label: "$100k - $250k/mo" },
+      { value: "250k+", label: "$250k+/mo" },
+    ],
     qualSubmit: "SUBMIT FORM",
     qualErrorRequired: "This field is required",
     qualErrorEmail: "Enter a valid work email",
-    qualQualifiedTitle: "Your organization qualifies for an assessment",
-    qualQualifiedMsg: "Based on your answers, your organization would significantly benefit from our integrated governance services. We will schedule a diagnostic session with our senior team.",
-    qualQualifiedCta: "SCHEDULE DIAGNOSTIC SESSION",
-    qualNotQualifiedTitle: "Resources sent to your email",
-    qualNotQualifiedMsg: "We've sent a selection of resources to help you get started with data and AI governance. If your needs evolve, we're here.",
+    qualQualifiedTitle: "Free 30-Min Strategic Session: Turn Risk Into Operational Control",
+    qualQualifiedSubtitle: "We've identified you as a strong fit for a **30-minute governance mapping session** designed for executives responsible for AI, data, privacy, and security risk. This isn't theory, it's a focused conversation that surfaces blind spots and creates a defensible path forward.",
+    qualQualifiedCalendlyTitle: "Select Your Time",
+    qualQualifiedWhyTitle: "Why This Matters",
+    qualQualifiedWhyIntro: "In this session, we'll tackle the risks that trip up leadership most often:",
+    qualQualifiedWhyBullets: [
+      { bold: "Unclear decision ownership", rest: " for AI and data outcomes" },
+      { bold: "Regulatory exposure", rest: " from cross-border flows and model deployment" },
+      { bold: "Incidents that escalate to board crises", rest: " without practiced governance" },
+      { bold: "Policies that exist on paper", rest: " but lack operational muscle" },
+    ],
+    qualQualifiedWhyOutro: "You'll leave with **clarity on next steps**, not vague recommendations.",
+    qualNotQualifiedTitle: "Your ebook has been sent!",
+    qualNotQualifiedMsg: "We've sent the ebook \"Data Protection Is Not A Policy Problem\" to the email you provided. Check your inbox. If your needs evolve, we're here to help.",
 
     // Testimonials section
-    testimonialsLabel: "TESTIMONIALS",
-    testimonialsHeadline: "What leaders say when governance becomes executable",
+    testimonialsLabel: "OUR TEAM",
+    testimonialsHeadline: "10+ years of experience and 20 elite lawyers at your service",
     testimonials: [
       {
         name: "General Counsel",
@@ -423,6 +507,18 @@ export const translations = {
     bottomCtaHeadline: "If you are already dealing with real exposure, take the first step.",
     bottomCtaSubtitle: "Identify your highest-risk gaps. Map accountability and decision rights. Define an execution plan for the next 30 to 90 days.",
     bottomCtaButton: "COMPLETE THE FORM ABOVE",
+
+    // Ebook section
+    ebookHeadline: "Download your free guide",
+    ebookDesc: "Learn the 5 simple signs any CEO (and even CIOs or IT managers) can use to figure out if your organization is secure from hackers, crooks, and internet thieves.",
+    ebookFirstName: "First Name*",
+    ebookLastName: "Last Name*",
+    ebookEmail: "Email*",
+    ebookCompany: "Company*",
+    ebookPhone: "Phone*",
+    ebookSubmit: "GET MY FREE COPY",
+    ebookThankYou: "Thank you! Check your email to download the guide.",
+    ebookImageAlt: "Ebook cover",
 
     // Footer
     footerTagline: "DATA PROTECTION, AI GOVERNANCE & CYBERSECURITY",

@@ -1,18 +1,19 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
+
 const PAIN_POINT_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&fit=crop",
-    alt: "AI technology abstract visualization",
+    src: "/images/pain-1-ai-ownership-new.jpg",
+    alt: "AI governance and ownership in corporate setting",
   },
   {
-    src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&fit=crop",
-    alt: "Global data network connections",
+    src: "/images/pain-2-data-flows-new.jpg",
+    alt: "Global data network visualization",
   },
   {
-    src: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80&fit=crop",
-    alt: "Executive boardroom crisis meeting",
+    src: "/images/pain-3-incident-new.jpg",
+    alt: "Executive team managing incident response",
   },
 ];
 
@@ -81,7 +82,7 @@ export default function PainPointsSection() {
   };
 
   return (
-    <section className="relative py-20 px-4 bg-[#0B1620]">
+    <section className="relative py-20 px-4 bg-[#0B1620] overflow-hidden">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 
@@ -101,7 +102,7 @@ export default function PainPointsSection() {
       </div>
 
       {/* Pain point rows */}
-      <div className="max-w-5xl mx-auto mt-16 flex flex-col gap-16">
+      <div className="relative z-10 max-w-5xl mx-auto mt-16 flex flex-col gap-16">
         {t.painPoints.map((point, i) => (
           <PainPointRow key={i} point={point} index={i} />
         ))}
@@ -110,7 +111,7 @@ export default function PainPointsSection() {
       {/* CTA */}
       <div
         ref={ctaAnim.ref}
-        className={`mt-16 text-center transition-all duration-700 ease-out ${ctaAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        className={`relative z-10 mt-16 text-center transition-all duration-700 ease-out ${ctaAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
         <button
           onClick={scrollToForm}
