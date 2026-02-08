@@ -3,15 +3,6 @@ import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
 
-const BRAND_LOGOS = [
-  { name: "Asian Paints", src: "https://lexavy.net/wp-content/uploads/2025/06/asianpaints.svg" },
-  { name: "Mahindra", src: "https://lexavy.net/wp-content/uploads/2025/06/mahindra.svg" },
-  { name: "Flipkart", src: "https://lexavy.net/wp-content/uploads/2025/06/flipkart.svg" },
-  { name: "Vivo", src: "https://lexavy.net/wp-content/uploads/2025/06/vivo.svg" },
-  { name: "SKODA", src: "https://lexavy.net/wp-content/uploads/2025/06/SKODA.svg" },
-  { name: "Nike", src: "https://lexavy.net/wp-content/uploads/2025/06/nike.svg" },
-];
-
 const TEAM_PHOTOS = [
   "/images/maria-lobato.png",
   "https://lexavy.net/wp-content/uploads/2025/07/Firefly-20250425111748-2.webp",
@@ -49,7 +40,6 @@ export default function SocialProofSection() {
   const { t } = useLang();
   const [activeIndex, setActiveIndex] = useState(0);
   const titleAnim = useScrollAnimation();
-  const logosAnim = useScrollAnimation();
   const teamAnim = useScrollAnimation();
   const statsAnim = useScrollAnimation();
 
@@ -74,27 +64,6 @@ export default function SocialProofSection() {
         <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-bold text-[#EAF2F7] mb-10">
           {t.socialProofLabel}
         </h2>
-      </div>
-
-      {/* Brand logos */}
-      <div
-        ref={logosAnim.ref}
-        className={`relative z-10 max-w-4xl mx-auto grid grid-cols-3 sm:grid-cols-6 gap-6 items-center mb-14 transition-all duration-700 ease-out ${logosAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        {BRAND_LOGOS.map((logo, i) => (
-          <div
-            key={i}
-            className={`flex items-center justify-center px-3 py-2 transition-all duration-700 ease-out ${logosAnim.isVisible ? "opacity-70 hover:opacity-100" : "opacity-0"}`}
-            style={{ transitionDelay: `${i * 100}ms` }}
-          >
-            <img
-              src={logo.src}
-              alt={logo.name}
-              className="h-8 sm:h-10 w-auto object-contain brightness-0 invert opacity-60 hover:opacity-100 transition-opacity"
-              loading="lazy"
-            />
-          </div>
-        ))}
       </div>
 
       {/* Team carousel */}
