@@ -19,6 +19,7 @@ export default function QualificationForm() {
     role: "",
   });
   const [errors, setErrors] = useState({});
+  const [sending, setSending] = useState(false);
   const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
 
   const validate = () => {
@@ -30,13 +31,28 @@ export default function QualificationForm() {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
-    if (Object.keys(errs).length === 0) {
-      window.location.hash = "#/qualified";
+    if (Object.keys(errs).length > 0) return;
+
+    setSending(true);
+    try {
+      await fetch("/api/send-ebook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.contactName,
+          email: form.email,
+          lang: t.lang === "ES" ? "es" : "en",
+        }),
+      });
+    } catch {
+      // Still redirect — they can download from the qualified page
     }
+    setSending(false);
+    window.location.hash = "#/qualified";
   };
 
   return (
@@ -65,7 +81,7 @@ export default function QualificationForm() {
         {/* Left: ebook image + description */}
         <div className="w-full lg:w-auto lg:max-w-sm shrink-0 flex flex-col items-center lg:items-start gap-6 lg:sticky lg:top-8">
           <img
-            src="/images/ebook-cover.jpg"
+            src="/images/ebook-cover.png"
             alt={t.ebookImageAlt}
             className="w-full max-w-xs rounded-xl shadow-2xl shadow-[#00C2D1]/10"
             loading="lazy"
@@ -109,9 +125,10 @@ export default function QualificationForm() {
 
           <button
             type="submit"
-            className="mt-6 w-full rounded-lg bg-[#00C2D1] px-8 py-3.5 text-sm font-bold tracking-wider text-[#0B1620] hover:bg-[#00A8B5] transition-colors cursor-pointer shadow-lg shadow-[#00C2D1]/20"
+            disabled={sending}
+            className="mt-6 w-full rounded-lg bg-[#00C2D1] px-8 py-3.5 text-sm font-bold tracking-wider text-[#0B1620] hover:bg-[#00A8B5] transition-colors cursor-pointer shadow-lg shadow-[#00C2D1]/20 disabled:opacity-60 disabled:cursor-wait"
           >
-            {t.qualSubmit}
+            {sending ? "..." : t.qualSubmit}
           </button>
         </form>
       </div>
