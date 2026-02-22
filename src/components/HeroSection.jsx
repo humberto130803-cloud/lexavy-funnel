@@ -109,37 +109,16 @@ export default function HeroSection() {
             {t.vslTitle}
           </p>
 
-          {/* VSL Video placeholder */}
+          {/* VSL Video */}
           <div className="w-full aspect-video rounded-2xl overflow-hidden border border-[#1B3A4B] bg-[#102635] shadow-2xl shadow-[#00C2D1]/5">
-            <div className="relative w-full h-full flex items-center justify-center">
-              {/* Play button overlay */}
-              <button className="flex items-center justify-center w-16 h-16 rounded-full bg-[#00C2D1]/10 border-2 border-[#00C2D1]/40 hover:bg-[#00C2D1]/20 transition-colors cursor-pointer group">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="#00C2D1"
-                  className="ml-1 group-hover:scale-110 transition-transform"
-                >
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-              </button>
-              {/* Shield motif */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="160"
-                  height="160"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#00C2D1"
-                  strokeWidth="0.5"
-                >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-            </div>
+            <video
+              className="w-full h-full object-cover"
+              controls
+              preload="metadata"
+              poster=""
+            >
+              <source src="/Lexavy VSL.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* VSL Description bullets */}
