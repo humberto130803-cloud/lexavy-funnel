@@ -75,30 +75,17 @@ export default function QualificationForm() {
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 
-      {/* Headline */}
-      <div
-        ref={headlineAnim.ref}
-        className={`transition-all duration-700 ease-out ${headlineAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        <h2 className="max-w-3xl mx-auto text-center text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#EAF2F7]">
-          {t.qualHeadline}
-        </h2>
-        <p className="max-w-2xl mx-auto mt-5 text-center text-base md:text-lg text-[#9FB3C8] leading-relaxed">
-          {t.qualSubtitle}
-        </p>
-      </div>
-
-      {/* Two-column: ebook left + form right */}
+      {/* Two-column: ebook left + headline/form right */}
       <div
         ref={contentAnim.ref}
-        className={`max-w-6xl mx-auto mt-12 flex flex-col lg:flex-row items-start gap-10 transition-all duration-700 ease-out ${contentAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        className={`max-w-6xl mx-auto flex flex-col lg:flex-row items-start gap-10 transition-all duration-700 ease-out ${contentAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
-        {/* Left: ebook image + description */}
-        <div className="w-full lg:w-auto lg:max-w-sm shrink-0 flex flex-col items-center lg:items-start gap-6 lg:sticky lg:top-8">
+        {/* Left: large ebook image + description */}
+        <div className="w-full lg:w-[38%] shrink-0 flex flex-col items-center lg:items-start gap-6 lg:sticky lg:top-8">
           <img
             src="/images/ebook-cover.png"
             alt={t.ebookImageAlt}
-            className="w-full max-w-xs rounded-xl shadow-2xl shadow-[#00C2D1]/10"
+            className="w-full rounded-xl shadow-2xl shadow-[#00C2D1]/10"
             loading="lazy"
           />
           <p className="text-sm text-[#9FB3C8] leading-relaxed text-center lg:text-left">
@@ -106,7 +93,17 @@ export default function QualificationForm() {
           </p>
         </div>
 
-        {/* Right: form */}
+        {/* Right: headline + subtitle + form */}
+        <div
+          ref={headlineAnim.ref}
+          className={`flex-1 w-full transition-all duration-700 ease-out ${headlineAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#EAF2F7]">
+            {t.qualHeadline}
+          </h2>
+          <p className="mt-5 mb-8 text-center text-base md:text-lg text-[#9FB3C8] leading-relaxed">
+            {t.qualSubtitle}
+          </p>
         <form
           onSubmit={handleSubmit}
           onFocus={handleFormFocus}
@@ -147,6 +144,7 @@ export default function QualificationForm() {
             {sending ? "..." : t.qualSubmit}
           </button>
         </form>
+        </div>
       </div>
     </section>
   );

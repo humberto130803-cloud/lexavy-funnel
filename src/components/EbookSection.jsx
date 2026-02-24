@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+
 const inputClass =
   "w-full rounded-lg border border-[#1B3A4B] bg-[#0B1620] px-4 py-2.5 text-sm text-[#EAF2F7] placeholder-[#9FB3C8]/50 outline-none focus:border-[#00C2D1]/50 transition-colors";
+
+const selectClass =
+  "w-full rounded-lg border border-[#1B3A4B] bg-[#0B1620] px-4 py-2.5 text-sm text-[#9FB3C8]/50 outline-none focus:border-[#00C2D1]/50 transition-colors appearance-none cursor-pointer";
 
 export default function EbookSection() {
   const { t } = useLang();
   const anim = useScrollAnimation();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    company: "",
-    phone: "",
+    contactName: "",
+    corpEmail: "",
+    role: "",
   });
   const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
@@ -22,11 +24,9 @@ export default function EbookSection() {
 
   const validate = () => {
     const errs = {};
-    if (!form.firstName.trim()) errs.firstName = true;
-    if (!form.lastName.trim()) errs.lastName = true;
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = true;
-    if (!form.company.trim()) errs.company = true;
-    if (!form.phone.trim()) errs.phone = true;
+    if (!form.contactName.trim()) errs.contactName = true;
+    if (!form.corpEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.corpEmail)) errs.corpEmail = true;
+    if (!form.role) errs.role = true;
     return errs;
   };
 
@@ -42,8 +42,9 @@ export default function EbookSection() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: form.firstName,
-          email: form.email,
+          name: form.contactName,
+          email: form.corpEmail,
+          role: form.role,
           lang: t.lang === "ES" ? "es" : "en",
         }),
       });
@@ -76,85 +77,84 @@ export default function EbookSection() {
 
       <div
         ref={anim.ref}
-        className={`relative z-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 transition-all duration-700 ease-out ${anim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        className={`relative z-10 max-w-6xl mx-auto transition-all duration-700 ease-out ${anim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
-        {/* Left: ebook image + description */}
-        <div className="flex-1 flex flex-col items-center md:items-start gap-6">
-          <div className="w-full max-w-xs">
+        {/* Two-column: ebook image left, title + form right */}
+        <div className="flex flex-col md:flex-row items-start gap-10">
+          {/* Left: large ebook image + description */}
+          <div className="md:w-[38%] shrink-0 flex flex-col items-center md:items-start gap-6">
             <img
               src="/images/ebook-cover.png"
               alt={t.ebookImageAlt}
               className="w-full rounded-xl shadow-2xl shadow-[#00C2D1]/10"
               loading="lazy"
             />
+            <p className="text-sm text-[#9FB3C8] leading-relaxed text-center md:text-left">
+              {t.ebookDesc}
+            </p>
           </div>
-          <p className="text-sm text-[#9FB3C8] leading-relaxed max-w-sm text-center md:text-left">
-            {t.ebookDesc}
-          </p>
-        </div>
 
-        {/* Right: form */}
-        <div className="flex-1 w-full max-w-md">
-          <div className="rounded-2xl border border-[#1B3A4B] bg-[#102635] p-8">
-            <h3 className="text-2xl font-bold text-[#EAF2F7] text-center mb-6 uppercase">
+          {/* Right: headline + subtitle + form card */}
+          <div className="flex-1 w-full">
+            <h3 className="text-3xl md:text-4xl font-bold text-[#EAF2F7] text-center">
               {t.ebookHeadline}
             </h3>
+            <p className="mt-4 mb-8 text-base text-[#9FB3C8] text-center">
+              {t.ebookSubtitle}
+            </p>
+            <div className="rounded-2xl border border-[#1B3A4B] bg-[#102635] p-8">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                {/* Name + Email side by side */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.ebookContactName}</label>
+                    <input
+                      type="text"
+                      value={form.contactName}
+                      onChange={update("contactName")}
+                      className={`${inputClass} ${errors.contactName ? "border-red-400" : ""}`}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.ebookCorpEmail}</label>
+                    <input
+                      type="email"
+                      value={form.corpEmail}
+                      onChange={update("corpEmail")}
+                      className={`${inputClass} ${errors.corpEmail ? "border-red-400" : ""}`}
+                    />
+                  </div>
+                </div>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder={t.ebookFirstName}
-                  value={form.firstName}
-                  onChange={update("firstName")}
-                  className={`${inputClass} ${errors.firstName ? "border-red-400" : ""}`}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder={t.ebookLastName}
-                  value={form.lastName}
-                  onChange={update("lastName")}
-                  className={`${inputClass} ${errors.lastName ? "border-red-400" : ""}`}
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder={t.ebookEmail}
-                  value={form.email}
-                  onChange={update("email")}
-                  className={`${inputClass} ${errors.email ? "border-red-400" : ""}`}
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder={t.ebookCompany}
-                  value={form.company}
-                  onChange={update("company")}
-                  className={`${inputClass} ${errors.company ? "border-red-400" : ""}`}
-                />
-              </div>
-              <div>
-                <input
-                  type="tel"
-                  placeholder={t.ebookPhone}
-                  value={form.phone}
-                  onChange={update("phone")}
-                  className={`${inputClass} ${errors.phone ? "border-red-400" : ""}`}
-                />
-              </div>
+                {/* Role dropdown */}
+                <div>
+                  <label className="block text-xs font-medium text-[#9FB3C8] mb-1.5">{t.ebookRole}</label>
+                  <div className="relative">
+                    <select
+                      value={form.role}
+                      onChange={update("role")}
+                      className={`${selectClass} ${form.role ? "text-[#EAF2F7]" : ""} ${errors.role ? "border-red-400" : ""}`}
+                    >
+                      <option value="" disabled>{t.ebookRolePlaceholder}</option>
+                      {t.ebookRoles.map((role, i) => (
+                        <option key={i} value={role}>{role}</option>
+                      ))}
+                    </select>
+                    <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9FB3C8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                </div>
 
-              <button
-                type="submit"
-                disabled={sending}
-                className="w-full rounded-lg bg-[#00C2D1] px-8 py-3.5 text-sm font-bold tracking-wider text-[#0B1620] hover:bg-[#00A8B5] transition-colors cursor-pointer shadow-lg shadow-[#00C2D1]/20 mt-2 disabled:opacity-60 disabled:cursor-wait"
-              >
-                {sending ? "..." : t.ebookSubmit}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="w-full rounded-lg bg-[#00C2D1] px-8 py-3.5 text-sm font-bold tracking-wider text-[#0B1620] hover:bg-[#00A8B5] transition-colors cursor-pointer shadow-lg shadow-[#00C2D1]/20 mt-2 disabled:opacity-60 disabled:cursor-wait uppercase"
+                >
+                  {sending ? "..." : t.ebookSubmit}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

@@ -248,8 +248,14 @@ export const translations = {
     bottomCtaButton: "COMPLETA EL FORMULARIO ARRIBA",
 
     // Ebook section
-    ebookHeadline: "Descarga tu guía gratuita",
+    ebookHeadline: "Consigue tu copia del ebook gratuita",
+    ebookSubtitle: "Completa este breve formulario para recibir tu guía estratégica de ciberseguridad y compliance directamente en tu email.",
     ebookDesc: "Descubre las 7 señales estructurales que revelan cuándo los controles de ciberseguridad y compliance de tu organización no resistirán presión real — ya sea una auditoría regulatoria, un incidente de ransomware o una investigación forense. Una guía estratégica para equipos de liderazgo senior.",
+    ebookContactName: "Nombre de contacto*",
+    ebookCorpEmail: "Email corporativo*",
+    ebookRole: "Tu rol*",
+    ebookRolePlaceholder: "Selecciona una opción",
+    ebookRoles: ["CEO / Fundador", "CIO / CTO", "CISO / Director de Seguridad", "Gerente de TI", "VP / Director", "Otro"],
     ebookFirstName: "Nombre*",
     ebookLastName: "Apellido*",
     ebookEmail: "Email*",
@@ -511,8 +517,14 @@ export const translations = {
     bottomCtaButton: "COMPLETE THE FORM ABOVE",
 
     // Ebook section
-    ebookHeadline: "Download your free guide",
+    ebookHeadline: "Get your free ebook copy",
+    ebookSubtitle: "Complete this short form to receive your strategic cybersecurity and compliance guide directly to your email.",
     ebookDesc: "Discover the 7 structural signals that reveal when your organization's cybersecurity and compliance controls will not withstand real pressure — whether it's a regulatory audit, a ransomware incident, or a forensic investigation. A strategic assessment guide for senior leadership teams.",
+    ebookContactName: "Contact name*",
+    ebookCorpEmail: "Corporate email*",
+    ebookRole: "Your role*",
+    ebookRolePlaceholder: "Select an option",
+    ebookRoles: ["CEO / Founder", "CIO / CTO", "CISO / Security Director", "IT Manager", "VP / Director", "Other"],
     ebookFirstName: "First Name*",
     ebookLastName: "Last Name*",
     ebookEmail: "Email*",
