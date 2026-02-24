@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLang } from "../LanguageContext";
+import { trackEbookDownload, trackCalendlyInteraction } from "../utils/analytics";
 
 function renderBold(text) {
   const parts = text.split(/\*\*(.*?)\*\*/g);
@@ -43,7 +44,18 @@ export default function QualifiedPage() {
       return () => clearInterval(check);
     }
 
-    return () => { if (el) el.innerHTML = ""; };
+    // Calendly fires postMessage events for interactions
+    const onCalendlyMessage = (e) => {
+      if (e.data?.event === "calendly.event_type_viewed") trackCalendlyInteraction("viewed");
+      if (e.data?.event === "calendly.date_and_time_selected") trackCalendlyInteraction("date_selected");
+      if (e.data?.event === "calendly.event_scheduled") trackCalendlyInteraction("scheduled");
+    };
+    window.addEventListener("message", onCalendlyMessage);
+
+    return () => {
+      window.removeEventListener("message", onCalendlyMessage);
+      if (el) el.innerHTML = "";
+    };
   }, []);
 
   return (
@@ -62,8 +74,9 @@ export default function QualifiedPage() {
         {/* Ebook download */}
         <div className="mt-8 flex justify-center">
           <a
-            href="/ebook/data-protection-ebook.pdf"
+            href="/Lexavy%207%20Signals%20E-book.pdf"
             download
+            onClick={trackEbookDownload}
             className="inline-flex items-center gap-2 rounded-lg bg-[#00C2D1] px-8 py-3.5 text-sm font-bold tracking-wider text-[#0B1620] hover:bg-[#00A8B5] transition-colors shadow-lg shadow-[#00C2D1]/20"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

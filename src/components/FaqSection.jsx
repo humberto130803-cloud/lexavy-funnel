@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import useTrackVisibility from "../hooks/useTrackVisibility";
+import { trackFaqOpen } from "../utils/analytics";
 
 
-function FaqItem({ question, answer, index }) {
+function FaqItem({ question, answer, index, onOpen }) {
   const [open, setOpen] = useState(false);
   const anim = useScrollAnimation();
 
@@ -14,7 +16,7 @@ function FaqItem({ question, answer, index }) {
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <button
-        onClick={() => setOpen(!open)}
+        onClick={() => { if (!open) onOpen(index); setOpen(!open); }}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-[#102635] cursor-pointer group"
       >
         <span className="text-sm sm:text-base font-medium text-[#EAF2F7]">
@@ -62,9 +64,10 @@ function FaqItem({ question, answer, index }) {
 export default function FaqSection() {
   const { t } = useLang();
   const titleAnim = useScrollAnimation();
+  const trackRef = useTrackVisibility("faq");
 
   return (
-    <section className="relative py-20 px-4 bg-[#102635] overflow-hidden">
+    <section ref={trackRef} className="relative py-20 px-4 bg-[#102635] overflow-hidden">
       {/* Title */}
       <div
         ref={titleAnim.ref}
@@ -78,7 +81,7 @@ export default function FaqSection() {
       {/* FAQ list */}
       <div className="max-w-3xl mx-auto flex flex-col gap-3">
         {t.faqs.map((faq, i) => (
-          <FaqItem key={i} question={faq.q} answer={faq.a} index={i} />
+          <FaqItem key={i} question={faq.q} answer={faq.a} index={i} onOpen={trackFaqOpen} />
         ))}
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import useTrackVisibility from "../hooks/useTrackVisibility";
 
 
 const TEAM_PHOTOS = [
@@ -40,6 +41,7 @@ export default function SocialProofSection() {
   const { t } = useLang();
   const [activeIndex, setActiveIndex] = useState(0);
   const titleAnim = useScrollAnimation();
+  const trackRef = useTrackVisibility("social_proof");
   const teamAnim = useScrollAnimation();
   const statsAnim = useScrollAnimation();
 
@@ -52,7 +54,7 @@ export default function SocialProofSection() {
   const next = () => setActiveIndex((i) => (i === team.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="relative py-16 px-4 bg-[#0B1620] overflow-hidden">
+    <section ref={trackRef} className="relative py-16 px-4 bg-[#0B1620] overflow-hidden">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 

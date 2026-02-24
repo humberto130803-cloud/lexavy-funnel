@@ -1,5 +1,7 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import useTrackVisibility from "../hooks/useTrackVisibility";
+import { trackCtaClick, trackVideoEvent } from "../utils/analytics";
 
 
 export default function HeroSection() {
@@ -7,13 +9,15 @@ export default function HeroSection() {
   const badgeAnim = useScrollAnimation();
   const contentAnim = useScrollAnimation();
   const rightAnim = useScrollAnimation();
+  const trackRef = useTrackVisibility("hero");
 
   const scrollToForm = () => {
+    trackCtaClick("hero_cta", t.cta);
     document.getElementById("qualification-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-[#0B1620] overflow-hidden">
+    <section ref={trackRef} className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-[#0B1620] overflow-hidden">
       {/* Subtle radial glow behind content */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00C2D1]/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="relative max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -116,6 +120,9 @@ export default function HeroSection() {
               controls
               preload="metadata"
               poster=""
+              onPlay={() => trackVideoEvent("play")}
+              onPause={() => trackVideoEvent("pause")}
+              onEnded={() => trackVideoEvent("ended")}
             >
               <source src="/Lexavy VSL.mp4" type="video/mp4" />
             </video>

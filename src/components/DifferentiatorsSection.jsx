@@ -1,5 +1,6 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import useTrackVisibility from "../hooks/useTrackVisibility";
 
 
 // Shield + lock: Data Protection & Privacy
@@ -49,9 +50,10 @@ export default function DifferentiatorsSection() {
   const headlineAnim = useScrollAnimation();
   const gridAnim = useScrollAnimation();
   const mechAnim = useScrollAnimation();
+  const trackRef = useTrackVisibility("differentiators");
 
   return (
-    <section className="relative py-20 px-4 bg-[#102635] overflow-hidden">
+    <section ref={trackRef} className="relative py-20 px-4 bg-[#102635] overflow-hidden">
       {/* Headline */}
       <div
         ref={headlineAnim.ref}

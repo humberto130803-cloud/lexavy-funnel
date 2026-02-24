@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import useTrackVisibility from "../hooks/useTrackVisibility";
+import { trackFormStart, trackFormError, trackFormSubmit } from "../utils/analytics";
 
 const selectClass =
   "w-full rounded-lg border border-[#1B3A4B] bg-[#0B1620] px-4 py-2.5 text-sm text-[#EAF2F7] outline-none focus:border-[#00C2D1]/50 transition-colors appearance-none cursor-pointer";
@@ -12,6 +14,15 @@ export default function QualificationForm() {
   const { t } = useLang();
   const headlineAnim = useScrollAnimation();
   const contentAnim = useScrollAnimation();
+  const trackRef = useTrackVisibility("qualification_form");
+  const formStarted = useRef(false);
+
+  const handleFormFocus = useCallback(() => {
+    if (!formStarted.current) {
+      formStarted.current = true;
+      trackFormStart();
+    }
+  }, []);
 
   const [form, setForm] = useState({
     contactName: "",
@@ -35,8 +46,12 @@ export default function QualificationForm() {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
-    if (Object.keys(errs).length > 0) return;
+    if (Object.keys(errs).length > 0) {
+      trackFormError(Object.keys(errs));
+      return;
+    }
 
+    trackFormSubmit(form.role);
     setSending(true);
     try {
       await fetch("/api/send-ebook", {
@@ -56,7 +71,7 @@ export default function QualificationForm() {
   };
 
   return (
-    <section id="qualification-form" className="relative py-20 px-4 bg-[#0B1620]">
+    <section id="qualification-form" ref={trackRef} className="relative py-20 px-4 bg-[#0B1620]">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 
@@ -94,6 +109,7 @@ export default function QualificationForm() {
         {/* Right: form */}
         <form
           onSubmit={handleSubmit}
+          onFocus={handleFormFocus}
           className="flex-1 w-full rounded-2xl border border-[#1B3A4B] bg-[#102635] p-8"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -1,4 +1,5 @@
 import { useLang } from "../LanguageContext";
+import useTrackVisibility from "../hooks/useTrackVisibility";
 
 function LexavyLogo() {
   return (
@@ -90,9 +91,10 @@ function WebIcon() {
 
 export default function Footer() {
   const { t } = useLang();
+  const trackRef = useTrackVisibility("footer");
 
   return (
-    <footer className="relative py-12 px-4 bg-[#0B1620]">
+    <footer ref={trackRef} className="relative py-12 px-4 bg-[#0B1620]">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 

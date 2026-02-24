@@ -1,11 +1,18 @@
 import { useLang } from "../LanguageContext";
+import { trackLanguageToggle } from "../utils/analytics";
 
 export default function LanguageToggle() {
   const { lang, toggleLang } = useLang();
 
+  const handleToggle = () => {
+    const newLang = lang === "es" ? "en" : "es";
+    trackLanguageToggle(newLang);
+    toggleLang();
+  };
+
   return (
     <button
-      onClick={toggleLang}
+      onClick={handleToggle}
       className="fixed top-5 right-5 z-50 flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#1B3A4B] bg-[#102635] text-sm font-medium text-[#9FB3C8] hover:border-[#00C2D1] hover:text-[#00C2D1] transition-colors cursor-pointer"
     >
       <svg

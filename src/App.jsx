@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { LanguageProvider } from "./LanguageContext";
+import { trackPageView } from "./utils/analytics";
 import LanguageToggle from "./components/LanguageToggle";
 import HeroSection from "./components/HeroSection";
 import QualificationForm from "./components/QualificationForm";
@@ -16,8 +17,17 @@ function App() {
   const [page, setPage] = useState(window.location.hash);
 
   useEffect(() => {
-    const onHash = () => setPage(window.location.hash);
+    const onHash = () => {
+      setPage(window.location.hash);
+      const path = window.location.hash === "#/qualified" ? "/qualified" : "/";
+      trackPageView(path, document.title);
+    };
     window.addEventListener("hashchange", onHash);
+
+    // Initial page view
+    const initialPath = window.location.hash === "#/qualified" ? "/qualified" : "/";
+    trackPageView(initialPath, document.title);
+
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 

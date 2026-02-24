@@ -1,5 +1,6 @@
 import { useLang } from "../LanguageContext";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import useTrackVisibility from "../hooks/useTrackVisibility";
 
 
 const AVATAR_IMAGES = [
@@ -56,9 +57,10 @@ export default function TestimonialsSection() {
   const { t } = useLang();
   const headlineAnim = useScrollAnimation();
   const gridAnim = useScrollAnimation();
+  const trackRef = useTrackVisibility("testimonials");
 
   return (
-    <section className="relative py-20 px-4 bg-[#0B1620] overflow-hidden">
+    <section ref={trackRef} className="relative py-20 px-4 bg-[#0B1620] overflow-hidden">
       {/* Top divider */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#1B3A4B] to-transparent" />
 
