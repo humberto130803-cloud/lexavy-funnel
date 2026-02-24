@@ -249,7 +249,7 @@ export const translations = {
 
     // Ebook section
     ebookHeadline: "Descarga tu guía gratuita",
-    ebookDesc: "Descubre las 5 señales simples que cualquier CEO (e incluso CIOs o gerentes de TI) puede usar para evaluar si tu organización está protegida contra hackers y amenazas digitales.",
+    ebookDesc: "Descubre las 7 señales estructurales que revelan cuándo los controles de ciberseguridad y compliance de tu organización no resistirán presión real — ya sea una auditoría regulatoria, un incidente de ransomware o una investigación forense. Una guía estratégica para equipos de liderazgo senior.",
     ebookFirstName: "Nombre*",
     ebookLastName: "Apellido*",
     ebookEmail: "Email*",
@@ -512,7 +512,7 @@ export const translations = {
 
     // Ebook section
     ebookHeadline: "Download your free guide",
-    ebookDesc: "Learn the 5 simple signs any CEO (and even CIOs or IT managers) can use to figure out if your organization is secure from hackers, crooks, and internet thieves.",
+    ebookDesc: "Discover the 7 structural signals that reveal when your organization's cybersecurity and compliance controls will not withstand real pressure — whether it's a regulatory audit, a ransomware incident, or a forensic investigation. A strategic assessment guide for senior leadership teams.",
     ebookFirstName: "First Name*",
     ebookLastName: "Last Name*",
     ebookEmail: "Email*",

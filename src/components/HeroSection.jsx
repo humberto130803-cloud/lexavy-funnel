@@ -20,9 +20,9 @@ export default function HeroSection() {
     <section ref={trackRef} className="relative min-h-screen flex items-center justify-center px-4 py-20 bg-[#0B1620] overflow-hidden">
       {/* Subtle radial glow behind content */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00C2D1]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="relative max-w-6xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <div className="relative max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-10 lg:gap-12">
         {/* Left column: Badge, Headline, Subtitle, Value Bullets, CTA */}
-        <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div className="lg:w-[38%] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-left">
           {/* Badge */}
           <div
             ref={badgeAnim.ref}
@@ -106,7 +106,7 @@ export default function HeroSection() {
         {/* Right column: VSL video placeholder with title and description */}
         <div
           ref={rightAnim.ref}
-          className={`flex-1 w-full max-w-md lg:max-w-lg flex flex-col gap-5 transition-all duration-700 ease-out delay-200 ${rightAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`flex-1 w-full flex flex-col gap-5 transition-all duration-700 ease-out delay-200 ${rightAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {/* VSL Title */}
           <p className="text-base font-semibold text-[#EAF2F7] leading-snug">
