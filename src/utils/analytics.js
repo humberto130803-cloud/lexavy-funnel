@@ -76,6 +76,13 @@ if (typeof window !== "undefined") {
   window.addEventListener("pagehide", flush);
 }
 
+// ── Meta Pixel helper ──────────────────────────────────────────────────
+function fbPixel(eventName, params = {}) {
+  if (typeof window !== "undefined" && window.fbq) {
+    window.fbq("track", eventName, params);
+  }
+}
+
 // ── Public API (identical signatures to previous GA4 version) ──────────
 
 export function trackPageView(pagePath, pageTitle) {
@@ -101,6 +108,7 @@ export function trackFormError(fields) {
 export function trackFormSubmit(role) {
   enqueue("form_submit", { form_id: "qualification", role });
   enqueue("generate_lead", { form_id: "qualification", role });
+  fbPixel("Lead", { content_name: "qualification_form", content_category: role });
 }
 
 export function trackVideoEvent(action) {
@@ -121,8 +129,12 @@ export function trackLanguageToggle(newLang) {
 
 export function trackEbookDownload() {
   enqueue("ebook_download", {});
+  fbPixel("Lead", { content_name: "ebook_download" });
 }
 
 export function trackCalendlyInteraction(action) {
   enqueue("calendly_interaction", { calendly_action: action });
+  if (action === "scheduled") {
+    fbPixel("Schedule", { content_name: "calendly_booking" });
+  }
 }
